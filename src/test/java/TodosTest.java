@@ -39,4 +39,36 @@ public class TodosTest {
         Assertions.assertArrayEquals(new Task[]{simpleTask}, result);
     }
 
+    @Test
+    public void shouldTestSomeTasks() {
+        SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
+        SimpleTask simpleTask2 = new SimpleTask(3, "Позвонить мне");
+        Todos todos = new Todos();
+        todos.add(simpleTask);
+        todos.add(simpleTask2);
+        Task[] result = todos.search("Позвонить родителям");
+        Assertions.assertArrayEquals(new Task[]{simpleTask}, result);
+    }
+
+    @Test
+    public void shouldTestOneTask() {
+
+        SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
+        Todos todos = new Todos();
+        todos.add(simpleTask);
+        Task[] result = todos.search("Позвонить родителям");
+        Assertions.assertArrayEquals(new Task[]{simpleTask}, result);
+    }
+
+
+    @Test
+    public void shouldTestZeroTask() {
+        Todos todos = new Todos();
+        todos.add(new SimpleTask(1, "Позвонить маме"));
+        todos.add(new SimpleTask(2, "Купить продукты"));
+        Task[] result = todos.search("Убраться в комнате");
+        Assertions.assertArrayEquals(new Task[0], result);
+    }
+
 }
+
