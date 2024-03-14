@@ -46,8 +46,8 @@ public class TodosTest {
         Todos todos = new Todos();
         todos.add(simpleTask);
         todos.add(simpleTask2);
-        Task[] result = todos.search("Позвонить родителям");
-        Assertions.assertArrayEquals(new Task[]{simpleTask}, result);
+        Task[] result = todos.search("Позвонить");
+        Assertions.assertArrayEquals(new Task[]{simpleTask,simpleTask2}, result);
     }
 
     @Test
